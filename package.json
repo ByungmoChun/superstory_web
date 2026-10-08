@@ -1,0 +1,10 @@
+{
+  "name": "superstory-web",
+  "version": "0.15.0",
+  "private": true,
+  "description": "SuperStory official website — static single-file site (hash router)",
+  "scripts": {
+    "dev": "npx serve public -l 3000",
+    "deploy": "vercel --prod"
+  }
+}
