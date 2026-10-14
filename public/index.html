@@ -435,6 +435,35 @@ button,input,select,textarea{font:inherit;color:inherit}
 .strat .cell h3{font-size:19.5px}
 .strat .cell p{font-size:15.5px;line-height:1.7;color:var(--fg-2)}
 @media(max-width:700px){.strat .step span{font-size:14.5px}.strat .fun-n{font-size:32px}}
+
+/* ============ LIGHT THEME ============ */
+:root[data-theme="light"]{
+  --ink:#faf8f9; --ground:#ffffff; --surface:#f6f3f5; --raised:#ede8eb;
+  --line:rgba(26,20,23,.11); --line-2:rgba(26,20,23,.22);
+  --brand-lit:#c70f24; --ember:#a8701a; --ok:#157f5e; --gold:#9a7b00; --lav:#6a5ec9; --coral:#d9631c;
+  --fg:#1a1417; --fg-2:#544a4d; --mute:#8a8084;
+}
+:root[data-theme="light"] .nav{background:rgba(250,248,249,.88)}
+:root[data-theme="light"] .sub{box-shadow:0 18px 40px rgba(26,20,23,.12)}
+:root[data-theme="light"] .ph.hero,:root[data-theme="light"] .ph.hero .crumb,:root[data-theme="light"] .hero-cap{--fg:#f4f2f0;--fg-2:#dcd8da;--ember:#e9b458;--gold:#e9c45a;color:var(--fg)}
+:root[data-theme="light"] .hero-cap{background:rgba(8,8,10,.55);border-color:rgba(255,255,255,.18)}
+:root[data-theme="light"] .btn.ghost{color:var(--fg);border-color:var(--line-2)}
+:root[data-theme="light"] .btn.ghost:hover{background:rgba(26,20,23,.05)}
+:root[data-theme="light"] .ph.hero .btn.ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+:root[data-theme="light"] .tag.st-live{background:rgba(21,127,94,.12)}
+:root[data-theme="light"] .tag.st-dev{background:rgba(154,123,0,.12)}
+:root[data-theme="light"] .tag.st-post,:root[data-theme="light"] .tag.st-lav{background:rgba(106,94,201,.12)}
+:root[data-theme="light"] .tag.new{background:rgba(168,112,26,.12)}
+:root[data-theme="light"] .bar.fix{background:rgba(208,16,39,.1);border-color:rgba(208,16,39,.55);color:#8a0f1c}
+:root[data-theme="light"] .bar.done{background:rgba(21,127,94,.1);border-color:rgba(21,127,94,.5)}
+:root[data-theme="light"] .dm-col{background:rgba(26,20,23,.02)}
+:root[data-theme="light"] .cell,:root[data-theme="light"] .ip,:root[data-theme="light"] .demo,:root[data-theme="light"] .ref,:root[data-theme="light"] .foot{box-shadow:0 1px 0 rgba(26,20,23,.04)}
+:root[data-theme="light"] .ip .ip-art img:not(.kv img){filter:none}
+:root[data-theme="light"] .drawer{box-shadow:0 20px 40px rgba(26,20,23,.12)}
+:root[data-theme="light"] .lb{background:#fff}
+:root[data-theme="light"] .lb.dark{background:#08080a}
+.theme{flex:none;margin-left:6px;width:32px;height:30px;border:1px solid var(--line-2);background:none;color:var(--fg-2);cursor:pointer;font-size:14px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:.16s}
+.theme:hover{color:var(--fg);border-color:var(--fg)}
 /* ============ PARTNER LOGOS ============ */
 .plogos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:4px}
 .plogo{margin:0;display:flex;flex-direction:column;gap:7px;min-width:0}
@@ -464,7 +493,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 @media(max-width:900px){.dm-bh{grid-template-columns:1fr;gap:8px}.dm-grid{grid-template-columns:1fr}}
 .demo.has-img{padding:0}.demo.has-img>.tags,.demo.has-img>b,.demo.has-img>span{margin-left:14px;margin-right:14px}.demo.has-img>.tags{margin-top:12px}.demo.has-img>span{margin-bottom:14px}
 .demo-fig{aspect-ratio:16/9;overflow:hidden;background:#000;border-bottom:1px solid var(--line);position:relative}
-a.demo{text-decoration:none;color:inherit;display:flex}a.demo:hover{border-color:var(--brand)}
+a.demo{text-decoration:none;color:inherit;display:flex}a.demo:hover,.demo.has-img:hover{border-color:var(--brand)}
 .demo .demo-fig .demo-play,.demo .demo-fig .demo-play span{color:#fff;font-size:11.5px}
 .demo-acts{position:absolute;right:8px;bottom:8px;display:flex;gap:6px}.demo-acts .demo-play{position:static;text-decoration:none}.demo-acts .demo-play:hover{background:var(--brand-lit)}
 .demo-play{position:absolute;right:8px;bottom:8px;display:inline-flex;align-items:center;background:var(--brand);color:#fff;font-size:11.5px;font-weight:600;padding:5px 9px;letter-spacing:.04em;box-shadow:0 4px 16px rgba(0,0,0,.5)}.demo-play .tri{font-size:9px}.demo-fig img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}.demo:hover .demo-fig img{transform:scale(1.04)}
@@ -1017,6 +1046,7 @@ function navHTML(active){
         <button type="button" data-lang="en" aria-pressed="${L==='en'}">EN</button>
         <button type="button" data-lang="ja" aria-pressed="${L==='ja'}">JP</button>
       </div>
+      <button class="theme" type="button" id="theme" aria-label="${T==='light'?'Dark mode':'Light mode'}" title="${T==='light'?'다크 모드':'라이트 모드'}">${T==='light'?'☾':'☀'}</button>
       <button class="burger" type="button" id="burger" aria-label="Menu"><span></span></button>
     </div>
     <div class="drawer${drawerOpen?' open':''}" id="drawer">${dr}</div>
@@ -1921,6 +1951,8 @@ function heroStart(){
 }
 function bind(){
   heroStart();
+  const th=document.getElementById('theme');
+  if(th)th.onclick=()=>{T=T==='light'?'dark':'light';applyTheme();try{localStorage.setItem('ss-theme',T)}catch(e){}const y=window.scrollY;render();window.scrollTo(0,y);};
   const b=document.getElementById('burger');
   if(b)b.onclick=()=>{drawerOpen=!drawerOpen;document.getElementById('drawer').classList.toggle('open',drawerOpen);};
   document.querySelectorAll('.lang button').forEach(el=>el.onclick=()=>{
@@ -1957,6 +1989,12 @@ function bind(){
     location.href=`mailto:${MAIL}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;};
 }
 window.addEventListener('hashchange',()=>{drawerOpen=false;render();window.scrollTo(0,0);});
+const THEME_DEFAULT='dark'; // 'dark' | 'light'
+let T=THEME_DEFAULT;
+try{T=localStorage.getItem('ss-theme')||THEME_DEFAULT}catch(e){}
+try{const q=new URLSearchParams(location.search).get('theme');if(q==='light'||q==='dark')T=q;}catch(e){}
+function applyTheme(){document.documentElement.setAttribute('data-theme',T);const m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',T==='light'?'#faf8f9':'#08080a');}
+applyTheme();
 try{L=localStorage.getItem('ss-lang')||'ko'}catch(e){}
 if(!['ko','en','ja'].includes(L))L='ko';
 document.documentElement.setAttribute('data-lang',L);
