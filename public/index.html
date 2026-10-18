@@ -1317,17 +1317,13 @@ function vAbout(){
         [L3('경영관리본부','Corporate','経営管理本部'),L3('김승호','Kim Seung-ho','キム・スンホ'),L3('인사 · 재무','People & finance','人事・財務')]]
         .map(o=>`<div class="cell"><h3 style="font-size:15px;margin-top:0">${esc(t(o[0]))}</h3><p class="num" style="letter-spacing:.06em">${esc(t(o[1]))}</p><p style="margin-top:8px">${esc(t(o[2]))}</p></div>`).join('')}</div>
     </div></div>`)+
-  sec(sh('Leadership',L3('웹툰 유료화를 처음 만든 사람, 그 시스템을 23년간 만들어 온 사람','The man who first made webtoons paid, and the man who has built those systems for 23 years','ウェブトゥーン有料化を始めた人と、23年そのシステムを作ってきた人'))+
-    `<div class="grid g2">${[
+  sec(sh('Leadership',L3('웹툰 유료화를 처음 만든 그 사람.','The man who first made webtoons paid.','ウェブトゥーン有料化を始めた、その人。'))+
+    `<div class="grid" style="grid-template-columns:1fr">${[
       ['Founder & CEO',L3('김창민','Kim Chang-min','キム・チャンミン'),L3('국내 1호 트랜스미디어 프로듀서 · 콘텐츠 IP 20년+','Korea’s first transmedia producer · 20+ years in content IP','国内1号トランスメディアプロデューサー'),
        [L3('CJ ENM 트랜스미디어 프로듀서 — 〈미생〉 IP 드라마화 등','Transmedia producer at CJ ENM, including the Misaeng IP adaptation'),
         L3('레진엔터테인먼트 Co-Founder — 국내 최초 웹툰 유료화 서비스 론칭','Co-founder of Lezhin Entertainment — launched Korea’s first paid webtoon service'),
         L3('코미카 · 크로스코믹스 · 창미카 창업 — 한국 · 중국 · 인도네시아 · 인도 네 개 시장에서 웹툰 플랫폼 설립 · 운영','Founded Comica, CrossComics and ChangMica across Korea, China, Indonesia and India'),
-        L3('원작향 웹툰 100여 타이틀 투자 · 제작','Invested in and produced 100+ adaptation-ready titles')]],
-      ['CTO',L3('전병모','Jeon Byung-mo','チョン・ビョンモ'),L3('개발 23년차 · PlayToon Maker 개발 총괄','23 years in engineering · leads PlayToon Maker','開発23年・PlayToon Maker開発総括'),
-       [L3('㈜위메이드커넥트 부장 — 스퀘어에닉스 공동 프로젝트 〈그림노츠〉 총괄 PD','Director at Wemade Connect — lead PD on Grimms Notes with Square Enix'),
-        L3('㈜액토즈소프트 실장 — 〈확산성 밀리언아서〉 〈괴리성 밀리언아서〉 PD 및 시스템 개발 총괄','Head of development at Actoz Soft — PD and systems lead on Kaku-San-Sei Million Arthur and Kai-Ri-Sei Million Arthur','㈱アクトズソフト室長 — 『拡散性ミリオンアーサー』『乖離性ミリオンアーサー』PD兼システム開発総括'),
-        L3('엔진 · 클라이언트 · 서버 전 영역 총괄','Covers engine, client and server')]]]
+        L3('원작향 웹툰 100여 타이틀 투자 · 제작','Invested in and produced 100+ adaptation-ready titles')]]]
       .map(p=>`<div class="cell"><p class="num">${p[0]}</p>
         <h3 style="font-family:var(--myeong);font-weight:800;font-size:23px;margin:10px 0 4px">${esc(t(p[1]))}</h3>
         <p style="color:var(--ember);font-size:13px;margin-bottom:14px">${esc(t(p[2]))}</p>
