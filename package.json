@@ -1,6 +1,6 @@
 {
   "name": "superstory-web",
-  "version": "0.62.2",
+  "version": "0.63.1",
   "private": true,
   "description": "SuperStory official website — static single-file site (hash router)",
   "scripts": {
